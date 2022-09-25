@@ -1,5 +1,6 @@
 resource "aws_instance" "nginx_server1" {
-  ami           = var.ami_id
+#count = 2 
+ ami           = var.ami_id
   instance_type = "t2.micro"
   tags = {
     Name = "nginx_server1"
@@ -24,6 +25,9 @@ resource "aws_instance" "nginx_server1" {
       "sudo /tmp/nginx.sh"
     ]
   }
+#tags = {
+#    Name = "Server ${count.index}"
+ # }
   # Setting up the ssh connection to install the nginx server
   connection {
     type        = "ssh"
